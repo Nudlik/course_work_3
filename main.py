@@ -4,11 +4,10 @@ from settings import PATH_TO_JSON
 
 
 def main():
-    transactions = ReadJson.load_json(PATH_TO_JSON)
-    sorted_transactions = utils.sort_transactions(transactions)
-    transactions_list = [Transaction(transaction) for transaction in sorted_transactions]
-    for i in transactions_list:
-        print(i, '\n')
+    transactions_load = ReadJson.load_json(PATH_TO_JSON)
+    transactions_sorted = utils.sort_transactions(transactions_load)
+    transactions_list = [Transaction(transaction) for transaction in transactions_sorted]
+    [print(i, '\n') for i in transactions_list]
 
 
 if __name__ == '__main__':
