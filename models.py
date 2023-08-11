@@ -36,6 +36,11 @@ class Transaction:
 
     @staticmethod
     def mask_cards(card):
+        """
+        Шифрует номера карт
+        :param card: номер карточки
+        :return: скрытый номер
+        """
         if card is None:
             return ''
         card = card.split()[-1]
@@ -46,6 +51,10 @@ class Transaction:
                 return f'**{card[-4:]}'
 
     def get_date(self):
+        """
+        Удобный формат даты
+        :return: время день месяц год
+        """
         date_format = datetime.datetime.strptime(self.date, '%Y-%m-%dT%H:%M:%S.%f')
         date = date_format.strftime('%d.%m.%Y')
         return date
@@ -63,6 +72,11 @@ class ReadJson:
 
     @staticmethod
     def load_json(path):
+        """
+        Загрузка json
+        :param path: путь до файла
+        :return: json
+        """
         if not os.path.exists(path):
             return None
         with open(path, 'r', encoding='utf-8') as f:
