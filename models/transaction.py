@@ -68,7 +68,7 @@ class Transaction:
     def __get_from(self):
         if self.__from is None:
             return 'Неизвестно'
-        return f'{" ".join(self.__from.split()[:-1])}'
+        return " ".join(self.__from.split()[:-1])
 
     def __get_to(self):
-        return f'{" ".join(self.__to.split()[:-1])}'
+        return " ".join(self.__to.split()[:-1])
