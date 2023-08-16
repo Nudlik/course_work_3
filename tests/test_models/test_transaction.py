@@ -1,6 +1,6 @@
-from models.transaction import Transaction
-
 import pytest
+
+from models.transaction import Transaction
 
 
 def test_Transaction__repr__good(test_fixture_trans_good):
@@ -15,13 +15,13 @@ def test_Transaction__repr__good(test_fixture_trans_good):
 
 def test_Transaction__str__good(test_fixture_trans_good):
     assert Transaction(test_fixture_trans_good).__str__() == f'07.12.2019 Перевод организации\n' \
-                                                             f'VisaClassic 2842 87** **** 9012 -> Счет **3655\n' \
+                                                             f'Visa Classic 2842 87** **** 9012 -> Счет **3655\n' \
                                                              f'48150.39 USD'
 
 
 def test_Transaction__str__not_good(test_fixture_trans_not_good):
     assert Transaction(test_fixture_trans_not_good).__str__() == '08.12.2019 Открытие вклада\n' \
-                                                                 'Неизвестно  -> Счет **5907\n' \
+                                                                 'Неизвестно \x08 -> Счет **5907\n' \
                                                                  '41096.24 USD'
 
 
@@ -42,7 +42,7 @@ def test_Transaction_get_date(test_fixture_trans_good, test_fixture_trans_not_go
 
 
 def test_Transaction_get_from(test_fixture_trans_good, test_fixture_trans_not_good):
-    assert Transaction(test_fixture_trans_good)._Transaction__get_from() == 'VisaClassic'
+    assert Transaction(test_fixture_trans_good)._Transaction__get_from() == 'Visa Classic'
     assert Transaction(test_fixture_trans_not_good)._Transaction__get_from() == 'Неизвестно'
 
 

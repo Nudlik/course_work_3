@@ -36,7 +36,7 @@ class Transaction:
         82771.72 руб
         """
         return f'{self.__get_date()} {self.__description}\n' \
-               f'{self.__get_from()} {self.__mask_cards(self.__from)} -> ' \
+               f'{" ".join([self.__get_from(), *[self.__mask_cards(self.__from) or chr(8)]])} -> ' \
                f'{self.__get_to()} {self.__mask_cards(self.__to)}\n' \
                f'{self.__amount} {self.__name}'
 
@@ -68,7 +68,7 @@ class Transaction:
     def __get_from(self):
         if self.__from is None:
             return 'Неизвестно'
-        return f'{"".join(self.__from.split()[:-1])}'
+        return f'{" ".join(self.__from.split()[:-1])}'
 
     def __get_to(self):
-        return f'{"".join(self.__to.split()[:-1])}'
+        return f'{" ".join(self.__to.split()[:-1])}'

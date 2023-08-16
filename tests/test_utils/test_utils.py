@@ -1,6 +1,6 @@
-from utils import sort_transactions
-
 import pytest
+
+from utils import sort_transactions
 
 
 @pytest.mark.parametrize('transactions, expected', [
