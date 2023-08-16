@@ -1,6 +1,6 @@
 import utils
-from models.transaction import Transaction
 from models.readjson import ReadJson
+from models.transaction import Transaction
 from settings import PATH_TO_JSON
 
 
