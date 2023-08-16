@@ -1,5 +1,5 @@
-import os
 import json
+import os
 
 
 class ReadJson:
@@ -15,6 +15,6 @@ class ReadJson:
         :return: json.load()
         """
         if not os.path.exists(path):
-            return None
+            raise FileNotFoundError(f'Файл по пути {path} не найден')
         with open(path, 'r', encoding='utf-8') as f:
             return json.load(f)
